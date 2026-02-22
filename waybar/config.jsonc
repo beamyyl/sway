@@ -7,7 +7,8 @@
     "margin-right": 10,
     "spacing": 4,
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    // Swapped hyprland modules for sway modules
+    "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
     "modules-center": [],
     "modules-right": ["pulseaudio", "tray", "clock", "custom/exit"],
 
@@ -17,14 +18,13 @@
         "tooltip": false
     },
 
-    "hyprland/workspaces": {
+    "sway/workspaces": {
         "format": "{name}",
         "on-click": "activate"
     },
 
-    "hyprland/window": {
+    "sway/window": {
         "format": "󱂬 {title}",
-        "separate-outputs": true,
         "max-length": 30
     },
 
@@ -48,7 +48,7 @@
 
     "custom/exit": {
         "format": "",
-        "on-click": "hyprctl dispatch exit",
+        "on-click": "swaymsg exit", // Changed from hyprctl to swaymsg
         "tooltip": false
     }
 }
