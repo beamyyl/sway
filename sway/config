@@ -25,10 +25,14 @@ set $wm_color_border_inactive_fg      #c0caf5
 set $wm_color_background              #1a1b26
 
 ### SwayFX Visuals (Replaces Picom) ###
-corner_radius 10
-shadows on
-shadow_blur_radius 15
+corner_radius 0
+shadows off
 blur off
+
+# Transparency (Matches your Picom config: inactive 0.90, active 1.0)
+for_window [tiling] opacity 1.0
+for_window [floating] opacity 1.0
+default_dim_inactive 0.10
 
 ### Fix for app startup delay ###
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -38,23 +42,16 @@ exec /usr/lib/xdg-desktop-portal-gtk &
 exec_always killall -q waybar; waybar &
 exec swaybg -i walls/wall1.jpg -m fill
 
-# Replaces xset r rate 360 25
+# xset r rate 360 25 equivalent
 input "type:keyboard" {
     repeat_delay 360
     repeat_rate 25
 }
 
 ### Applications ###
-# Start terminal
 bindsym Control+$amod+t exec $wm_setting_app_terminal
-
-# Start file manager
 bindsym $mod+e exec $wm_setting_app_files
-
-# Start program launcher
 bindsym $mod+r exec $wm_setting_app_launcher
-
-# Screenshot (Replaces maim/xclip with grim/slurp/wl-copy)
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 ### Workspaces ###
@@ -113,7 +110,6 @@ bindsym $mod+$smod+$wm_setting_key_down  move down
 bindsym $mod+$smod+$wm_setting_key_up    move up
 bindsym $mod+$smod+$wm_setting_key_right move right
 
-# Resize window mode
 mode "resize" {
     bindsym $wm_setting_key_left  resize shrink width 10 px or 10 ppt
     bindsym $wm_setting_key_up    resize grow height 10 px or 10 ppt
@@ -129,7 +125,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-# Enter Resize Mode
 bindsym $mod+$smod+r mode "resize"
 
 ### Gaps ###
@@ -155,8 +150,5 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+t floating toggle
 bindsym $mod+$smod+q kill
 
-# Reload/Restart
 bindsym $mod+Shift+c reload
-
-# Exit Sway (Replaces i3-msg exit)
-bindsym $mod+$smod+e exec swaymsg exit
+bindsym $mod+Shift+e exec swaymsg exit
