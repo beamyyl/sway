@@ -7,10 +7,9 @@
     "margin-right": 10,
     "spacing": 4,
 
-    // Swapped hyprland modules for sway modules
     "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "tray", "clock", "custom/exit"],
+    "modules-right": ["pulseaudio", "tray", "battery", "clock", "custom/exit"],
 
     "custom/launcher": {
         "format": "",
@@ -41,6 +40,18 @@
         "spacing": 10
     },
 
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
     "clock": {
         "format": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -48,7 +59,7 @@
 
     "custom/exit": {
         "format": "",
-        "on-click": "swaymsg exit", // Changed from hyprctl to swaymsg
+        "on-click": "swaymsg exit",
         "tooltip": false
     }
 }
