@@ -26,8 +26,8 @@ set $wm_color_background              #1a1b26
 
 ### SwayFX Visuals ###
 corner_radius 0
-shadows off
-blur off
+shadows on
+blur on
 
 # Transparency
 for_window [tiling] opacity 1.0
