@@ -1,72 +1,69 @@
-/* Tokyo Night Colors */
-@define-color bg #1a1b26;
-@define-color bg_alt #24283b;
-@define-color fg #c0caf5;
-@define-color primary #7aa2f7;
-@define-color secondary #bb9af7;
-@define-color alert #f7768e;
-@define-color disabled #565f89;
+@define-color bg #2E3440;
+@define-color light-bg #3B4252;
+@define-color accent #81A1C1;
+@define-color text #ECEFF4;
+@define-color urgent #BF616A;
 
 * {
-    font-family: "Iosevka Nerd Font";
-    font-size: 14px;
-    border: none;
-    border-radius: 0;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 0;
 }
 
 window#waybar {
-    background-color: @bg;
-    color: @fg;
-    border-radius: 12px;
-    transition-property: background-color;
-    transition-duration: .5s;
+  background: rgba(30, 34, 42, 0.7);
+  color: @text;
 }
 
-/* Modules General */
 #custom-launcher,
 #workspaces,
 #window,
-#pulseaudio,
 #tray,
+#battery,
+#pulseaudio,
 #clock,
 #custom-exit {
-    padding: 0 10px;
+  background-color: @light-bg;
+  color: @text;
+  border-radius: 10px;
+  margin: 5px 3px;
+  padding: 0px 10px;
 }
 
-/* Specific Styles */
 #custom-launcher {
-    color: @primary;
-    font-size: 18px; /* Making it pop like your font-1 */
+  color: @accent;
+  margin-left: 10px;
 }
 
 #workspaces button {
-    color: @fg;
-    padding: 0 5px;
+  color: @text;
+  padding: 0 5px;
 }
 
-#workspaces button.active {
-    color: @primary;
-    background-color: @bg_alt;
-    border-bottom: 3px solid @primary;
+#workspaces button.focused {
+  color: @accent;
+  border-bottom: 2px solid @accent;
 }
 
 #workspaces button.urgent {
-    background-color: @alert;
+  color: @urgent;
 }
 
-#window {
-    color: @primary;
+#battery.warning {
+  color: #EBCB8B;
 }
 
-#pulseaudio {
-    color: @secondary;
+#battery.critical {
+  color: @urgent;
 }
 
-#clock {
-    color: @primary;
+#pulseaudio.muted {
+  color: #4C566A;
 }
 
 #custom-exit {
-    color: @alert;
-    margin-right: 5px;
+  margin-right: 10px;
+  color: @urgent;
 }
