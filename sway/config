@@ -24,12 +24,12 @@ set $wm_color_border_inactive_bg      #24283b
 set $wm_color_border_inactive_fg      #c0caf5
 set $wm_color_background              #1a1b26
 
-### SwayFX Visuals (Replaces Picom) ###
+### SwayFX Visuals ###
 corner_radius 0
 shadows off
 blur off
 
-# Transparency (Matches your Picom config: inactive 0.90, active 1.0)
+# Transparency
 for_window [tiling] opacity 1.0
 for_window [floating] opacity 1.0
 default_dim_inactive 0.10
@@ -39,7 +39,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec /usr/lib/xdg-desktop-portal-gtk &
 
 ### Autostart & Hardware Settings ###
-exec_always killall -q waybar; waybar &
+exec waybar
 exec swaybg -i walls/wall1.jpg -m fill
 
 # xset r rate 360 25 equivalent
