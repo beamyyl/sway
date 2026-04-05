@@ -4,6 +4,7 @@ set $amod               Mod1
 set $smod               Shift
 set $wm_setting_font    pango:Iosevka Nerd Font Mono, Semibold 11
 
+output DP-2 mode 1920x1080@180Hz
 set $wm_setting_gap_width     5
 set $wm_setting_gap_heigth    5
 
@@ -25,7 +26,7 @@ set $wm_color_border_inactive_fg      #c0caf5
 set $wm_color_background              #1a1b26
 
 ### SwayFX Visuals ###
-corner_radius 0
+corner_radius 4
 shadows on
 blur on
 
@@ -35,17 +36,22 @@ for_window [floating] opacity 1.0
 default_dim_inactive 0.10
 
 ### Fix for app startup delay ###
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/lib/xdg-desktop-portal-gtk &
 
 ### Autostart & Hardware Settings ###
-exec waybar
+exec qs -c noctalia-shell
+exec gentoo-pipewire-launcher restart
 exec swaybg -i walls/wall1.jpg -m fill
 
-# xset r rate 360 25 equivalent
+# Input settings
 input "type:keyboard" {
     repeat_delay 360
     repeat_rate 25
+}
+input "type:pointer" {
+    accel_profile "flat"
+    pointer_accel 0
 }
 
 ### Applications ###
