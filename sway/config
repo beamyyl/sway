@@ -35,9 +35,7 @@ for_window [tiling] opacity 1.0
 for_window [floating] opacity 1.0
 default_dim_inactive 0.10
 
-### Fix for app startup delay ###
 exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec /usr/lib/xdg-desktop-portal-gtk &
 
 ### Autostart & Hardware Settings ###
 exec qs -c noctalia-shell
